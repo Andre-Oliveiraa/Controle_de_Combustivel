@@ -1,11 +1,11 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+export default function App() {
 
   return (
-    <div></div>
+    <div className='h-screen w-screen bg-zinc-900'>
+
+    </div>
   )
 }
-
-export default App
