@@ -5,7 +5,7 @@ import { HeaderIcon, HeaderRoot, HeaderTitle } from './components/header';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { Car, CircleFadingPlus, Trash2, Fuel, HandCoins, Coins, Gauge, Construction, TicketSlash } from 'lucide-react'
+import { Car, CircleFadingPlus, Trash2, Fuel as Fuelcon, HandCoins, Coins, Gauge, Construction, TicketSlash } from 'lucide-react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
@@ -18,20 +18,20 @@ interface Object_car {
 interface Info_Fuel {
   car: Object_car
   Type: string,
-  valueFuel: string,
-  valueAbasta: string,
-  qntFuel: string,
+  valueFuel: string | number,
+  valueAbasta: string | number,
+  qntFuel: string | number,
   km_rodado_car: number
 }
 
 export default function App() {
 
-  const [nameCar, SetNameCar] = useState('')
-  const [valuePlaca, SetValuePlaca] = useState('')
-  const [nameFuel, SetNameFuel] = useState('')
-  const [valueFuel, SetValueFuel] = useState('')
-  const [money, SetMoney] = useState('')
-  const [qntFuel, SetQntFuel] = useState('')
+  const [nameCar, SetNameCar] = useState(' ')
+  const [valuePlaca, SetValuePlaca] = useState(' ')
+  const [nameFuel, SetNameFuel] = useState(' ')
+  const [valueFuel, SetValueFuel] = useState(0)
+  const [money, SetMoney] = useState(0)
+  const [qntFuel, SetQntFuel] = useState(0)
   const [valueKmInit, SetKmInit] = useState<any>(0)
   const [valueKmFinali, SetKmFinali] = useState<any>(0)
   const [valueKmTotal, SetKmTotal] = useState(0)
@@ -58,9 +58,9 @@ export default function App() {
     SetNameCar('')
     SetNameFuel('')
     SetKmInit('')
-    SetValueFuel('')
-    SetMoney('')
-    SetQntFuel('')
+    SetValueFuel(0)
+    SetMoney(0)
+    SetQntFuel(0)
     SetValuePlaca('')
     SetKmFinali('')
     SetKmTotal(0)
@@ -70,13 +70,19 @@ export default function App() {
     SetKmTotal(valueKmFinali - valueKmInit)
   }
 
+  function Fuel(){
+    const total = valueFuel / money
+    Math.trunc(total)
+    SetQntFuel(total)
+  }
+
   function onClear() {
     SetNameCar('')
     SetNameFuel('')
     SetKmInit('')
-    SetValueFuel('')
-    SetMoney('')
-    SetQntFuel('')
+    SetValueFuel(0)
+    SetMoney(0)
+    SetQntFuel(0)
     SetValuePlaca('')
     SetKmFinali('')
     SetKmTotal(0)
@@ -133,7 +139,7 @@ export default function App() {
           <div>
             <Form.Label className='font-bold'>Tipos de Combustível</Form.Label>
             <InputGroup className="mb-5">
-              <InputGroup.Text><Fuel /></InputGroup.Text>
+              <InputGroup.Text><Fuelcon /></InputGroup.Text>
               <FloatingLabel
                 label='Ex: Diesel'
               >
@@ -164,7 +170,7 @@ export default function App() {
                   type="number"
                   placeholder='Ex: R$100'
                   aria-describedby="km inicil"
-                  onChange={(e) => { SetValueFuel(e.target.value) }}
+                  onChange={(e) => { SetValueFuel(Number(e.target.value)) }}
                   value={valueFuel}
                 />
               </FloatingLabel>
@@ -182,7 +188,7 @@ export default function App() {
                   type="number"
                   placeholder='Ex: R$5,9'
                   aria-describedby="km final"
-                  onChange={(e) => { SetMoney(e.target.value) }}
+                  onChange={(e) => { SetMoney(Number(e.target.value)) }}
                   value={money}
                 />
               </FloatingLabel>
@@ -200,10 +206,11 @@ export default function App() {
                   type="number"
                   placeholder='Ex: 10L'
                   aria-describedby="km final"
-                  onChange={(e) => { SetQntFuel(e.target.value) }}
+                  disabled
                   value={qntFuel}
                 />
               </FloatingLabel>
+              <Button variant='success' onClick={Fuel}>Calcular</Button>
             </InputGroup>
           </div>
         </div>
