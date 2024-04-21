@@ -71,9 +71,9 @@ export default function App() {
   }
 
   function Fuel(){
-    const total = valueFuel / money
-    Math.trunc(total)
-    SetQntFuel(total)
+    const totall = valueFuel / money
+    const total = totall.toFixed(2)
+    SetQntFuel(Number(total))
   }
 
   function onClear() {
@@ -202,7 +202,7 @@ export default function App() {
                 label='Ex: 27,7L'
               >
                 <Form.Control
-                  className='font-bold text-zinc-400 focus:text-zinc-400'
+                  className='font-bold text-zinc-500 focus:text-zinc-500'
                   type="number"
                   placeholder='Ex: 10L'
                   aria-describedby="km final"
