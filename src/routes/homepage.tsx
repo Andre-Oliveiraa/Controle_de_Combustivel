@@ -7,85 +7,28 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Car, CircleFadingPlus, Trash2, Fuel as Fuelcon, HandCoins, Coins, Gauge, Construction, TicketSlash } from 'lucide-react'
 import { useState } from 'react';
+import { useForm } from 'react-hook-form'
 import Button from 'react-bootstrap/Button';
 
-interface Object_car {
-  nome: string,
-  placa: string,
-  km_rodado: string
-}
-
-interface Info_Fuel {
-  car: Object_car
-  Type: string,
-  valueFuel: string | number,
-  valueAbasta: string | number,
-  qntFuel: string | number,
-  km_rodado_car: number
+interface PropsObjectInfo{
+  finaliKm: string,
+  initKm: string,
+  moneyFuel: string,
+  moneyLitro: string,
+  nameCar: string,
+  placaCar: string,
+  typeFuel: string
 }
 
 export default function HomePage() {
 
-  const [nameCar, SetNameCar] = useState(' ')
-  const [valuePlaca, SetValuePlaca] = useState(' ')
-  const [nameFuel, SetNameFuel] = useState(' ')
-  const [valueFuel, SetValueFuel] = useState(0)
-  const [money, SetMoney] = useState(0)
-  const [qntFuel, SetQntFuel] = useState(0)
-  const [valueKmInit, SetKmInit] = useState<any>(0)
-  const [valueKmFinali, SetKmFinali] = useState<any>(0)
-  const [valueKmTotal, SetKmTotal] = useState(0)
+  const [infoAll, SetInfoAll] = useState<PropsObjectInfo>()
 
-  function OnClickInfo() {
+  const { register, handleSubmit } = useForm()
 
-    const objectCar: Object_car = {
-      nome: nameCar,
-      placa: valuePlaca,
-      km_rodado: valueKmFinali
-    }
-
-    const infoAll: Info_Fuel = {
-      Type: nameFuel,
-      valueFuel: money,
-      valueAbasta: valueFuel,
-      qntFuel: qntFuel,
-      km_rodado_car: valueKmTotal,
-      car: objectCar
-    }
-
+  async function handleReqiterSubmit(dataForm: any) {
+    SetInfoAll(dataForm)
     console.log(infoAll)
-
-    SetNameCar(' ')
-    SetNameFuel(' ')
-    SetKmInit(' ')
-    SetValueFuel(0)
-    SetMoney(0)
-    SetQntFuel(0)
-    SetValuePlaca(' ')
-    SetKmFinali(' ')
-    SetKmTotal(0)
-  }
-
-  function CalKM() {
-    SetKmTotal(valueKmFinali - valueKmInit)
-  }
-
-  function Fuel(){
-    const totall = valueFuel / money
-    const total = totall.toFixed(2)
-    SetQntFuel(Number(total))
-  }
-
-  function onClear() {
-    SetNameCar(' ')
-    SetNameFuel(' ')
-    SetKmInit(' ')
-    SetValueFuel(0)
-    SetMoney(0)
-    SetQntFuel(0)
-    SetValuePlaca(' ')
-    SetKmFinali(' ')
-    SetKmTotal(0)
   }
 
   const fuel = ['Gasolina Comum', 'Gasolina Aditivada', 'Álcool - Etanol', 'Diesel']
@@ -98,7 +41,7 @@ export default function HomePage() {
       </HeaderRoot>
 
       {/* Home */}
-      <div className='w-full items-center flex flex-col px-10'>
+      <form onSubmit={handleSubmit(handleReqiterSubmit)} className='w-full items-center flex flex-col px-10'>
         <div className='grid grid-cols-3 gap-3 w-full'>
           <div >
             <Form.Label className='font-bold'>Veiculos</Form.Label>
@@ -108,13 +51,12 @@ export default function HomePage() {
                 label='Ex: Celta'
               >
                 <Form.Control
-                  className='font-bold text-zinc-400 focus:text-zinc-400'
+                  className='font-bold text-zinc-500 focus:text-zinc-500'
                   type="text"
                   placeholder='Celta'
                   aria-describedby="km inicil"
-                  onChange={(e) => { SetNameCar(e?.target?.value) }}
-                  value={nameCar}
                   required
+                  {...register('nameCar')}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -127,12 +69,12 @@ export default function HomePage() {
                 label='Ex: HTP6R54'
               >
                 <Form.Control
-                  className='font-bold text-zinc-400 focus:text-zinc-400'
+                  className='font-bold text-zinc-500 focus:text-zinc-500'
                   type="text"
                   placeholder='JTR 1S89'
+                  required
                   aria-describedby="km inicil"
-                  onChange={(e) => { SetValuePlaca(e?.target?.value) }}
-                  value={valuePlaca}
+                  {...register('placaCar')}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -144,12 +86,16 @@ export default function HomePage() {
               <FloatingLabel
                 label='Ex: Diesel'
               >
-                <Form.Select aria-label="Default select example" onChange={(e) => { SetNameFuel(e?.target?.value) }} className='font-bold'>
-                  <option selected>...</option>
+                <Form.Select 
+                aria-label="Default select example" 
+                className='font-bold text-zinc-500'
+                {...register('typeFuel')}
+                >
+                  <option selected className='font-bold text-zinc-500'>...</option>
                   {fuel?.map(
                     fuel => {
                       return (
-                        <option value={fuel} className='font-bold'>{fuel}</option>
+                        <option value={fuel} className='font-bold text-zinc-500'>{fuel}</option>
                       )
                     }
                   )}
@@ -167,12 +113,12 @@ export default function HomePage() {
                 label='Ex: R$ 150'
               >
                 <Form.Control
-                  className='font-bold text-zinc-400 focus:text-zinc-400'
+                  className='font-bold text-zinc-500 focus:text-zinc-500'
                   type="number"
                   placeholder='Ex: R$100'
                   aria-describedby="km inicil"
-                  onChange={(e) => { SetValueFuel(Number(e?.target?.value)) }}
-                  value={valueFuel}
+                  required
+                  {...register('moneyFuel')}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -185,12 +131,12 @@ export default function HomePage() {
                 label='Ex: R$5,4'
               >
                 <Form.Control
-                  className='font-bold text-zinc-400 focus:text-zinc-400'
+                  className='font-bold text-zinc-500 focus:text-zinc-500'
                   type="number"
                   placeholder='Ex: R$5,9'
                   aria-describedby="km final"
-                  onChange={(e) => { SetMoney(Number(e?.target?.value)) }}
-                  value={money}
+                  required
+                  {...register('moneyLitro')}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -208,44 +154,45 @@ export default function HomePage() {
                   placeholder='Ex: 10L'
                   aria-describedby="km final"
                   disabled
-                  value={qntFuel}
                 />
               </FloatingLabel>
-              <Button variant='success' onClick={Fuel}>Calcular</Button>
+              <Button variant='success'>Calcular</Button>
             </InputGroup>
           </div>
         </div>
         <div className='grid grid-cols-3 gap-3 w-full'>
-          <div>
-            <Form.Label className="font-bold">KM inicial</Form.Label>
+        <div >
+            <Form.Label className='font-bold'>Km inicial</Form.Label>
             <InputGroup className="mb-5">
               <InputGroup.Text><Car /></InputGroup.Text>
               <FloatingLabel
-                label='Ex: 7Km'
+                label='Ex: 7km'
               >
                 <Form.Control
-                  className='font-bold text-zinc-400 focus:text-zinc-400'
-                  type="number"
+                  className='font-bold text-zinc-500 focus:text-zinc-500'
+                  type="text"
+                  placeholder='Celta'
                   aria-describedby="km inicil"
-                  onChange={(e) => { SetKmInit(e?.target?.value) }}
-                  value={valueKmInit}
+                  required
+                  {...register('initKm')}
                 />
               </FloatingLabel>
             </InputGroup>
           </div>
-          <div>
-            <Form.Label className="font-bold">KM Final</Form.Label>
+          <div >
+            <Form.Label className='font-bold'>Km final</Form.Label>
             <InputGroup className="mb-5">
               <InputGroup.Text><Car /></InputGroup.Text>
               <FloatingLabel
-                label='Ex: 14Km'
+                label='Ex: 14km'
               >
                 <Form.Control
-                  className='font-bold text-zinc-400 focus:text-zinc-400'
-                  type="number"
-                  aria-describedby="km final"
-                  onChange={(e) => { SetKmFinali(e?.target?.value) }}
-                  value={valueKmFinali}
+                  className='font-bold text-zinc-500 focus:text-zinc-500'
+                  type="text"
+                  placeholder='Celta'
+                  aria-describedby="km inicil"
+                  required
+                  {...register('finaliKm')}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -263,18 +210,17 @@ export default function HomePage() {
                   aria-describedby="km final"
                   disabled
                   placeholder='0'
-                  value={valueKmTotal}
                 />
               </FloatingLabel>
-              <Button variant='success' onClick={CalKM}>Calcular</Button>
+              <Button variant='success'>Calcular</Button>
             </InputGroup>
           </div>
         </div>
         <div className='w-40 ml-auto'>
-          <Button variant="success" onClick={OnClickInfo} className='mb-3 flex gap-2 items-center justify-center hover:text-green-200 w-full' type='submit'><CircleFadingPlus /><p>Cadastrar</p></Button>
-          <Button variant="danger" onClick={onClear} className='mb-3 flex gap-2 items-center justify-center hover:text-red-200 w-full' type='submit'><Trash2 /><p>Limpar</p></Button>
+          <Button variant="success" className='mb-3 flex gap-2 items-center justify-center hover:text-green-200 w-full' type='submit'><CircleFadingPlus /><p>Cadastrar</p></Button>
+          <Button variant="danger" className='mb-3 flex gap-2 items-center justify-center hover:text-red-200 w-full' type='submit'><Trash2 /><p>Limpar</p></Button>
         </div>
-      </div>
+      </form>
 
       {/* Footer */}
       <footer className='h-32 bg-gray-400 w-full px-24 py-3 justify-between flex flex-col'>
