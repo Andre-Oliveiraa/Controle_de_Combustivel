@@ -90,6 +90,7 @@ export default function HomePage() {
                 aria-label="Default select example" 
                 className='font-bold text-zinc-500'
                 {...register('typeFuel')}
+                defaultValue={''}
                 >
                   <option selected className='font-bold text-zinc-500'>...</option>
                   {fuel?.map(
@@ -119,6 +120,7 @@ export default function HomePage() {
                   aria-describedby="km inicil"
                   required
                   {...register('moneyFuel')}
+                  min={0}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -137,6 +139,7 @@ export default function HomePage() {
                   aria-describedby="km final"
                   required
                   {...register('moneyLitro')}
+                  min={0}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -170,11 +173,12 @@ export default function HomePage() {
               >
                 <Form.Control
                   className='font-bold text-zinc-500 focus:text-zinc-500'
-                  type="text"
+                  type="number"
                   placeholder='Celta'
                   aria-describedby="km inicil"
                   required
                   {...register('initKm')}
+                  min={0}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -188,11 +192,12 @@ export default function HomePage() {
               >
                 <Form.Control
                   className='font-bold text-zinc-500 focus:text-zinc-500'
-                  type="text"
+                  type="number"
                   placeholder='Celta'
                   aria-describedby="km inicil"
                   required
                   {...register('finaliKm')}
+                  min={0}
                 />
               </FloatingLabel>
             </InputGroup>
