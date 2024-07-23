@@ -231,9 +231,9 @@ export default function HomePage() {
       <footer className='h-32 bg-gray-400 w-full px-24 py-3 justify-between flex flex-col'>
         <p className='font-bold'>Desenvolvido por:</p>
         <div className='flex justify-between items-center w-full'>
-          <a href="" className='font-bold text-xl hover:outline-none hover:text-zinc-200'>Robson</a>
-          <a href="" className='font-bold text-xl hover:outline-none hover:text-zinc-200'>Wandell</a>
-          <a href="" className='font-bold text-xl hover:outline-none hover:text-zinc-200'>Igor</a>
+          <a href="" className='font-bold text-xl outline-none hover:text-zinc-200'>Robson</a>
+          <a href="" className='font-bold text-xl outline-none hover:text-zinc-200'>Wandell</a>
+          <a href="" className='font-bold text-xl outline-none hover:text-zinc-200'>Igor</a>
         </div>
         <p></p>
       </footer>
