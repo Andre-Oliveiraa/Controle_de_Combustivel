@@ -26,9 +26,9 @@ export default function HomePage() {
   const [ValueFull, SetValueFull] = useState<any>()
   const [ValueForPart, SetValueForPart] = useState<any>()
   const [TotalValue, SetTotalValue] = useState<any>('0')
-  const [] = useState()
-  const [] = useState()
-  const [] = useState()
+  const [KmInit, SetKmInit] = useState<any>()
+  const [KmFinal, SetKmFinal] = useState<any>()
+  const [KmRodado, SetKmRodado] = useState<any>("0")
   
   const { register, handleSubmit } = useForm()
   
@@ -43,6 +43,13 @@ export default function HomePage() {
     var total = ValueFull / ValueForPart
     SetTotalValue(total.toFixed(2))
   }
+  
+  function KmTotal(){
+    var total = KmFinal - KmInit
+    SetKmRodado(total.toFixed(2))
+  }
+
+
 
   return (
     <div className='h-screen flex flex-col justify-between bg-zinc-600 font-outfit'>
@@ -197,6 +204,8 @@ export default function HomePage() {
                   required
                   {...register('initKm')}
                   min={0}
+                 
+                  onChange{e => SetKmInit(e.target.value)}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -216,6 +225,8 @@ export default function HomePage() {
                   required
                   {...register('finaliKm')}
                   min={0}
+                  
+                  onChange{e => SetKmFinal(e.target.value)}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -233,6 +244,7 @@ export default function HomePage() {
                   aria-describedby="km final"
                   disabled
                   placeholder='0'
+                  value={KmRodado}
                 />
               </FloatingLabel>
               <Button variant='success'>Calcular</Button>
