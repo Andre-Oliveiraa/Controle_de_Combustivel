@@ -241,8 +241,8 @@ export default function HomePage() {
         </div>
         <div className='w-40 ml-auto'>
           <Button variant="success" className='mb-3 flex gap-2 items-center justify-center hover:text-green-200 w-full' type='submit'><CircleFadingPlus /><p>Cadastrar</p></Button>
-          <Button variant="danger" className='mb-3 flex gap-2 items-center justify-center hover:text-red-200 w-full' type='submit'><Trash2 /><p>Limpar</p></Button>
-        </div>
+          <Button variant="danger" className='mb-3 flex gap-2 items-center justify-center hover:text-red-200 w-full' type='button'><Trash2 /><p>Limpar</p></Button>
+        </div>  
       </form>
 
       {/* Footer */}
