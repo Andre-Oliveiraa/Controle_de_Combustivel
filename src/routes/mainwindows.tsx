@@ -18,7 +18,7 @@ export default function MainWindows() {
 
       <p className='text-4xl w-1/2 my-1 text-justify'>Bem vindo, ao nosso sistema de controle de combustível que visa ajudar voçê a ter mais controle e gerenciar os seus carros e caminhões ou para planejar seus gastos na viajem. </p>
       <Link to={'homepage'} className='my-4'> 
-      <Button variant='success'>Button Test</Button>
+      <Button variant='success'>Começar Trabalho</Button>
      </Link>
     </div>
   )

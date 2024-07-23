@@ -23,15 +23,26 @@ interface PropsObjectInfo{
 export default function HomePage() {
 
   const [infoAll, SetInfoAll] = useState<PropsObjectInfo>()
-
+  const [ValueFull, SetValueFull] = useState<any>()
+  const [ValueForPart, SetValueForPart] = useState<any>()
+  const [TotalValue, SetTotalValue] = useState<any>('0')
+  const [] = useState()
+  const [] = useState()
+  const [] = useState()
+  
   const { register, handleSubmit } = useForm()
-
+  
   async function handleReqiterSubmit(dataForm: any) {
     SetInfoAll(dataForm)
     console.log(infoAll)
   }
 
   const fuel = ['Gasolina Comum', 'Gasolina Aditivada', 'Álcool - Etanol', 'Diesel']
+
+  function TotalFull(){
+    var total = ValueFull / ValueForPart
+    SetTotalValue(total.toFixed(2))
+  }
 
   return (
     <div className='h-screen flex flex-col justify-between bg-zinc-600 font-outfit'>
@@ -121,6 +132,9 @@ export default function HomePage() {
                   required
                   {...register('moneyFuel')}
                   min={0}
+                  onChange={e => SetValueFull(e.target.value)}
+                  pattern={"[0-9]+([,\.][0-9]+)?"}
+                  step={"any"}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -140,6 +154,9 @@ export default function HomePage() {
                   required
                   {...register('moneyLitro')}
                   min={0}
+                  onChange={e => SetValueForPart(e.target.value)}
+                  pattern={"[0-9]+([,\.][0-9]+)?"}
+                  step={"any"}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -157,9 +174,10 @@ export default function HomePage() {
                   placeholder='Ex: 10L'
                   aria-describedby="km final"
                   disabled
+                  value={TotalValue}
                 />
               </FloatingLabel>
-              <Button variant='success'>Calcular</Button>
+              <Button variant='success' onClick={TotalFull}>Calcular</Button>
             </InputGroup>
           </div>
         </div>
