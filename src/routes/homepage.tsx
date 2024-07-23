@@ -11,13 +11,13 @@ import { useForm } from 'react-hook-form'
 import Button from 'react-bootstrap/Button';
 
 interface PropsObjectInfo{
-  finaliKm: string,
-  initKm: string,
-  moneyFuel: string,
-  moneyLitro: string,
   nameCar: string,
   placaCar: string,
   typeFuel: string
+  moneyLitro: string,
+  moneyFuel: string,
+  finaliKm: string,
+  initKm: string,
 }
 
 export default function HomePage() {
@@ -87,7 +87,7 @@ export default function HomePage() {
                 label='Ex: HTP6R54'
               >
                 <Form.Control
-                  className='font-bold text-zinc-500 focus:text-zinc-500'
+                  className='font-bold text-zinc-500 focus:text-zinc-500 uppercase'
                   type="text"
                   placeholder='JTR 1S89'
                   required
@@ -205,7 +205,7 @@ export default function HomePage() {
                   {...register('initKm')}
                   min={0}
                  
-                  onChange{e => SetKmInit(e.target.value)}
+                  onChange={(e) => SetKmInit(e.target.value)}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -226,7 +226,7 @@ export default function HomePage() {
                   {...register('finaliKm')}
                   min={0}
                   
-                  onChange{e => SetKmFinal(e.target.value)}
+                  onChange={e => SetKmFinal(e.target.value)}
                 />
               </FloatingLabel>
             </InputGroup>
@@ -247,7 +247,7 @@ export default function HomePage() {
                   value={KmRodado}
                 />
               </FloatingLabel>
-              <Button variant='success'>Calcular</Button>
+              <Button variant='success' onClick={KmTotal}>Calcular</Button>
             </InputGroup>
           </div>
         </div>
