@@ -5,10 +5,11 @@ import { HeaderIcon, HeaderRoot, HeaderTitle } from '../../components/header';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { Car, CircleFadingPlus, Trash2, Fuel as Fuelcon, HandCoins, Coins, Gauge, Construction, TicketSlash } from 'lucide-react'
+import { Car, CircleFadingPlus, Trash2, Fuel as Fuelcon, HandCoins, Coins, Gauge, Construction, TicketSlash, ChevronLeft } from 'lucide-react'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 interface PropsObjectInfo {
   nameCar: string,
@@ -57,6 +58,12 @@ export default function App() {
         <HeaderIcon src='Logo.png' />
         <HeaderTitle>Controle de Combustível</HeaderTitle>
       </HeaderRoot>
+
+      <div className='w-24 ml-4 '>
+        <Link to={'/'} >
+          <button className='flex flex-row gap-2 p-1 text-red-500 border-red-300 border-2 w-24 items-center justify-center rounded-lg outline-none'> <ChevronLeft /> <p className='outline-none'>Voltar</p></button>
+        </Link>
+      </div>
 
       {/* Home */}
       <form onSubmit={handleSubmit(handleReqiterSubmit)} className='w-full items-center flex flex-col px-10'>
@@ -252,7 +259,11 @@ export default function App() {
           </div>
         </div>
         <div className='w-40 ml-auto'>
-          <Button variant="success" className='mb-3 flex gap-2 items-center justify-center hover:text-green-200 w-full' type='submit'><CircleFadingPlus /><p>Cadastrar</p></Button>
+          <Link to={'/SucessControl'}   >
+            <Button variant="success" className='mb-3 flex gap-2 items-center justify-center hover:text-green-200 w-full' type='submit'>
+              <CircleFadingPlus /><p>Cadastrar</p>
+            </Button>
+          </Link>
           <Button variant="danger" className='mb-3 flex gap-2 items-center justify-center hover:text-red-200 w-full' type='button'><Trash2 /><p>Limpar</p></Button>
         </div>
       </form>
