@@ -14,7 +14,7 @@ export default function App() {
 
   const [id, setId] = useState('');
   const gerarId = () => {
-    const novoId = Math.floor(100000000 + Math.random() * 900000000);
+    const novoId = Math.floor(100000 + Math.random() * 900000);
     setId(novoId.toString());
   };
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function App() {
       </div>
 
       <div>
-        <form action="" className='grid grid-cols-2 grid-rows-2 gap-3 mx-[34rem]'>
+        <form action="" className='grid grid-cols-2 grid-rows-3 gap-3 mx-[34rem]'>
           <div>
             <Form.Label className='font-bold'>Veiculos</Form.Label>
             <InputGroup className="mb-5">
@@ -129,7 +129,7 @@ export default function App() {
                   value={id}
                 />
               </FloatingLabel>
-              <button onClick={gerarId} type={'button'}><IterationCw /></button>
+              <button onClick={gerarId} type={'button'} className='px-2'><IterationCw /></button>
             </InputGroup>
             <InputGroup className='flex flex-row items-center gap-2 justify-center'>
               <InputGroup.Radio />
@@ -139,10 +139,10 @@ export default function App() {
 
           <div className=' h-full ml-4 w-full flex flex-row justify-center items-center'>
             <Link to={'/SucessCadastro'} >
-              <button type={'submit'} className='font-semibold text-zinc-200 rounded p-3 bg-indigo-400 border-none hover:bg-indigo-500 transition-all'>Cadastro de Veiculo </button>
+              <button type={'submit'} className='font-semibold text-zinc-200 rounded p-3 bg-indigo-400 border-none hover:bg-indigo-500 transition-all'>Cadastra Veiculo </button>
             </Link>
           </div>
-        </form>
+        </form> 
       </div>
     </div>
   )
