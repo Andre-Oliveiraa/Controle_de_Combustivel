@@ -37,7 +37,7 @@ export default function App() {
       </div>
 
       <div>
-        <form action="" className='grid grid-cols-2 grid-rows-3 gap-3 mx-[34rem]'>
+        <form action="" className='grid grid-cols-2 grid-rows-3 pb-5 gap-3 mx-[34rem] xl:mx-[20rem]'>
           <div>
             <Form.Label className='font-bold'>Veiculos</Form.Label>
             <InputGroup className="mb-5">

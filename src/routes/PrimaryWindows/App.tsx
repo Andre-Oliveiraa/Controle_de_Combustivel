@@ -8,7 +8,7 @@ import { Github } from 'lucide-react';
 export default function App() {
 
     return (
-        <div className='w-full h-screen flex flex-col items-center bg-slate-100 font-outfit gap-36'>
+        <div className='w-full h-full flex flex-col items-center bg-slate-100 font-outfit gap-36'>
 
             <HeaderRoot>
                 <HeaderIcon src='Logo.png' />
@@ -27,7 +27,7 @@ export default function App() {
                 </Link>
 
             </div>
-            <footer className='w-full pl-20'>
+            <footer className='w-full pl-20 pb-20'>
                 <a href="https://github.com/Andre-Oliveiraa/Controle_de_Combustivel" target='_blank' className='w-10 h-10 flex flex-row justify-center items-center rounded-full p-2 bg-zinc-600 hover:bg-zinc-400 cursor-pointer text-slate-100 hover:text-black transition-all'>
                     <Github />
                 </a>

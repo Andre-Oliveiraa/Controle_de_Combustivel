@@ -93,7 +93,7 @@ export default function App() {
   };
 
   return (
-    <div className='h-screen bg-slate-100 font-outfit'>
+    <div className='h-full  bg-slate-100 font-outfit'>
       <HeaderRoot>
         <HeaderIcon src='Logo.png' />
         <HeaderTitle>Controle de Combustivel</HeaderTitle>
@@ -105,7 +105,7 @@ export default function App() {
         </Link>
       </div>
 
-      <form className='grid grid-cols-2 grid-rows-3 gap-5 justify-center mx-[34rem]'>
+      <form className='grid grid-cols-2 grid-rows-3 gap-5 justify-center pb-5 mx-[2rem] xl:mx-[20rem]'>
 
         <div className='h-16'>
           <Form.Label className='font-bold'>Estado</Form.Label>
