@@ -19,7 +19,7 @@ export default function App() {
             <div className='flex flex-row justify-between w-1/2'>
 
                 <Link to={'CadastraVeiculos'}>
-                    <button className='font-semibold text-zinc-200 rounded p-3 bg-indigo-400 border-none hover:bg-indigo-500 transition-all'>Cadastra Veiculo</button>
+                    <button className='font-semibold text-zinc-200 rounded p-3 bg-indigo-400 border-none hover:bg-indigo-500 transition-all'>Cadastra Veículo</button>
                 </Link>
 
                 <Link to={'ControleOfCombustivel'}>

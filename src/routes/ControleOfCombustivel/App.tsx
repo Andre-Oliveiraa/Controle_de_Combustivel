@@ -2,7 +2,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HeaderIcon, HeaderRoot, HeaderTitle } from '../../components/header';
-import { ChevronLeft, Info, BadgeDollarSign, Map, Locate, LocateFixed } from 'lucide-react'
+import { ChevronLeft, Info, BadgeDollarSign, Map, Locate, LocateFixed, AtSign } from 'lucide-react'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
@@ -112,7 +112,7 @@ export default function App() {
           <InputGroup className="mb-5">
             <InputGroup.Text><Map /></InputGroup.Text>
             <FloatingLabel
-              label='Ex: Diesel'
+              label='Ex: Rondônia'
             >
               <Form.Select
                 aria-label="Default select example"
@@ -132,7 +132,7 @@ export default function App() {
           <InputGroup className="mb-5">
             <InputGroup.Text><Locate  /></InputGroup.Text>
             <FloatingLabel
-              label='Ex: Diesel'
+              label='Ex: Porto Velho'
             >
               <Form.Select
                 aria-label="Default select example"
@@ -152,7 +152,7 @@ export default function App() {
           <InputGroup className="mb-5">
             <InputGroup.Text><LocateFixed /></InputGroup.Text>
             <FloatingLabel
-              label='Ex: Diesel'
+              label='Ex: Vilhena'
             >
               <Form.Select
                 aria-label="Default select example"
@@ -176,12 +176,11 @@ export default function App() {
             >
               <Form.Control
                 className='font-bold text-zinc-500 focus:text-zinc-500 h-full'
-                type="number"
+                type="text"
                 placeholder='174597841'
                 aria-describedby="Nº de Matricula de Carro"
                 required
                 maxLength={6}
-                min={0}
               />
             </FloatingLabel>
           </InputGroup>
@@ -204,10 +203,30 @@ export default function App() {
             </FloatingLabel>
           </InputGroup>
         </div>
-
-        <div className="flex justify-center">
+        <div className='h-16'>
+          <Form.Label className='font-bold'>Email</Form.Label>
+          <InputGroup className="mb-5">
+            <InputGroup.Text><AtSign  /></InputGroup.Text>
+            <FloatingLabel
+              label='emailexemplo@gmail.com'
+            >
+              <Form.Control
+                className='font-bold text-zinc-500 focus:text-zinc-500 h-full'
+                type="text"
+                placeholder='emailexemplo@gmail.com'
+                aria-describedby="Nº de Matricula de Carro"
+                required
+                maxLength={6}
+              />
+            </FloatingLabel>
+          </InputGroup>
+        </div>
+        <div className="flex justify-center flex-col items-center">
           <Link to={'/SucessControl'}>
             <button type={'submit'} className='font-semibold text-zinc-200 rounded p-3 bg-indigo-400 border-none hover:bg-indigo-500 transition-all'>Enviar para analiser</button>
+          </Link>
+          <Link to={'/CadastraVeiculos'}>
+            <p className='text-sm text-slate-400 hover:text-cyan-500 transition-all'> Aviso! Cadastre primeiro seu veículo.</p>
           </Link>
         </div>
       </form>
