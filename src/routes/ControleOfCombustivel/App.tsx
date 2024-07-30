@@ -216,7 +216,6 @@ export default function App() {
                 placeholder='emailexemplo@gmail.com'
                 aria-describedby="Nº de Matricula de Carro"
                 required
-                maxLength={6}
               />
             </FloatingLabel>
           </InputGroup>
