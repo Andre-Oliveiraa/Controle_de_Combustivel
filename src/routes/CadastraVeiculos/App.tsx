@@ -68,6 +68,7 @@ export default function App() {
                   placeholder='21/22'
                   aria-describedby="Ano"
                   required
+                  maxLength={5}
                 />
               </FloatingLabel>
             </InputGroup>
