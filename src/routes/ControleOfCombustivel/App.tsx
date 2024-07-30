@@ -212,7 +212,7 @@ export default function App() {
             >
               <Form.Control
                 className='font-bold text-zinc-500 focus:text-zinc-500 h-full'
-                type="text"
+                type="email"
                 placeholder='emailexemplo@gmail.com'
                 aria-describedby="Nº de Matricula de Carro"
                 required
