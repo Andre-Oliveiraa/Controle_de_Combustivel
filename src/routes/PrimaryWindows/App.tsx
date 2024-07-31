@@ -8,7 +8,7 @@ import { Github } from 'lucide-react';
 export default function App() {
 
     return (
-        <div className='w-screen h-screen flex flex-col items-center bg-slate-100 font-outfit gap-44'>
+        <div className='w-full h-full flex flex-col items-center bg-slate-100 font-outfit gap-36'>
 
             <HeaderRoot>
                 <HeaderIcon src='Logo.png' />
@@ -19,7 +19,7 @@ export default function App() {
             <div className='flex flex-row justify-between w-1/2'>
 
                 <Link to={'CadastraVeiculos'}>
-                    <button className='font-semibold text-zinc-200 rounded p-3 bg-indigo-400 border-none hover:bg-indigo-500 transition-all'>Cadastra Veiculo</button>
+                    <button className='font-semibold text-zinc-200 rounded p-3 bg-indigo-400 border-none hover:bg-indigo-500 transition-all'>Cadastra Veículo</button>
                 </Link>
 
                 <Link to={'ControleOfCombustivel'}>
@@ -27,7 +27,7 @@ export default function App() {
                 </Link>
 
             </div>
-            <footer className='w-screen h-1/2 pl-20'>
+            <footer className='w-full pl-20 pb-20'>
                 <a href="https://github.com/Andre-Oliveiraa/Controle_de_Combustivel" target='_blank' className='w-10 h-10 flex flex-row justify-center items-center rounded-full p-2 bg-zinc-600 hover:bg-zinc-400 cursor-pointer text-slate-100 hover:text-black transition-all'>
                     <Github />
                 </a>
